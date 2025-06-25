@@ -1,0 +1,63 @@
+/* App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f6fa;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #2f3640;
+  margin-bottom: 20px;
+}
+
+.filters {
+  max-width: 400px;
+  margin: 0 auto 30px auto;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #273c75;
+}
+
+.filters input {
+  margin-top: 5px;
+  padding: 8px 12px;
+  border: 1.5px solid #dcdde1;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.filters input:focus {
+  border-color: #0097e6;
+  outline: none;
+}
+
+.item-list {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.item-list li {
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  font-weight: 500;
+  color: #353b48;
+}
