@@ -2,73 +2,12 @@ import { useState, type ChangeEvent } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import type { Item } from "./interfaces/item";
+import type { filters } from "./interfaces/filters";
+import ItemList from "./components/itemList";
+import Filters from "./components/filters";
 
-interface Item {
-  id: number;
-  name: string;
-  category: string;
-  description?: string;
-  price?: number;
-  stock?: number;
-}
 
-interface Filters {
-  name?: string;
-  category?: string;
-}
-
-interface FiltersProps {
-  filters: Filters;
-  onFilterChange: (filters: Filters) => void;
-}
-
-const Filters = ({ filters, onFilterChange }: FiltersProps) => {
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // TODO: actualizar filtro de nombre
-  };
-
-  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    // TODO: actualizar filtro de categoría
-  };
-
-  return (
-    <div className="filters">
-      <label>
-        Buscar por nombre:
-        <input type="text" value={filters.name || ""} onChange={handleNameChange} />
-      </label>
-      <label>
-        Filtrar por categoría:
-        <select value={filters.category || ""} onChange={handleCategoryChange}>
-          <option value="">Todas</option>
-          <option value="Electrónica">Electrónica</option>
-          <option value="Ropa">Ropa</option>
-          <option value="Alimentos">Alimentos</option>
-        </select>
-      </label>
-    </div>
-  );
-}
-
-interface ItemListProps {
-  items: Item[];
-}
-
-const ItemList = ({ items }: ItemListProps) => {
-  // TODO: controlar item expandido (estado local)
-  // TODO: manejar que solo un item esté expandido a la vez
-
-  return (
-    <ul className="item-list">
-      {items.map((item) => (
-        <li key={item.id} onClick={() => { /* TODO: toggle expandido */ }}>
-          <strong>{item.name}</strong>
-          {/* TODO: mostrar detalles solo si está expandido */}
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 const App = () => {
   const [items] = useState<Item[]>([
@@ -97,7 +36,7 @@ const App = () => {
       stock: 20,
     },
   ]);
-  const [filters, setFilters] = useState<Filters>({});
+  const [filters, setFilters] = useState<filters>({});
 
   // TODO: filtrar items por nombre y categoría (AND)
 
