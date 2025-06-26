@@ -1,13 +1,20 @@
 import type { ChangeEvent } from "react";
 import type { FiltersProps } from "../interfaces/filtersProps";
 
+
 export default function Filters({ filters, onFilterChange }: FiltersProps) {
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // TODO: actualizar filtro de nombre
+    onFilterChange({
+      ...filters,
+      name: e.target.value
+    });
   };
 
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    // TODO: actualizar filtro de categoría
+    onFilterChange({
+      ...filters,
+      category: e.target.value
+    });
   };
 
   return (

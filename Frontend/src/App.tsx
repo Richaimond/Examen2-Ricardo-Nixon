@@ -1,13 +1,11 @@
-import { useState, type ChangeEvent } from "react";
+import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import type { Item } from "./interfaces/item";
 import type { filters } from "./interfaces/filters";
-import ItemList from "./components/itemList";
-import Filters from "./components/filters";
-
-
+import Filters from "./components/Filters";
+import ItemList from "./components/ItemList";
 
 const App = () => {
   const [items] = useState<Item[]>([
@@ -36,11 +34,20 @@ const App = () => {
       stock: 20,
     },
   ]);
+
   const [filters, setFilters] = useState<filters>({});
 
-  // TODO: filtrar items por nombre y categoría (AND)
+  const filteredItems = items.filter((item) => {
+    const matchesName = filters.name
+      ? item.name.toLowerCase().includes(filters.name.toLowerCase())
+      : true;
 
-  const filteredItems = items; // reemplazar por lógica
+    const matchesCategory = filters.category
+      ? item.category === filters.category
+      : true;
+
+    return matchesName && matchesCategory;
+  });
 
   return (
     <>
@@ -59,6 +66,6 @@ const App = () => {
       <ItemList items={filteredItems} />
     </>
   );
-}
+};
 
 export default App;
