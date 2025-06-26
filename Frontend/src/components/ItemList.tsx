@@ -1,18 +1,27 @@
+import { useState } from "react";
 import type { ItemListProps } from "../interfaces/itemListpropst";
 
-export default function ItemList({ items }: ItemListProps){
-  // TODO: controlar item expandido (estado local)
-  // TODO: manejar que solo un item esté expandido a la vez
+export default function ItemList({ items }: ItemListProps) {
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+
+  const toggleItem = (id: number) => {
+    setExpandedId(prev => (prev === id ? null : id));
+  };
 
   return (
     <ul className="item-list">
       {items.map((item) => (
-        <li key={item.id} onClick={() => { /* TODO: toggle expandido */ }}>
+        <li key={item.id} onClick={() => toggleItem(item.id)}>
           <strong>{item.name}</strong>
-          {/* TODO: mostrar detalles solo si está expandido */}
+          {expandedId === item.id && (
+            <div>
+              <p>{item.description}</p>
+              <p>Precio: ${item.price}</p>
+              <p>Stock: {item.stock}</p>
+            </div>
+          )}
         </li>
       ))}
     </ul>
   );
 }
-

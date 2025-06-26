@@ -1,6 +1,6 @@
-import type { Filters } from "./Filters";
+import type { filters } from "./filters";
 
 export interface FiltersProps {
-  filters: Filters;
-  onFilterChange: (filters: Filters) => void;
+  filters: filters;
+  onFilterChange: (filters: filters) => void;
 }
