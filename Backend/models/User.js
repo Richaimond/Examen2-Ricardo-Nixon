@@ -4,13 +4,13 @@ const UserSchema = new Schema({
     name: String,
     email: {
         type: String,
-        unique: true,
+        unique: false,
         required: true
     },
     password: String,
     roles: {
         type: [String],
-        default: []// user, admin
+        default: []
     },
     failedAttempts: {
         type: Number,
