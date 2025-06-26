@@ -11,9 +11,19 @@ const UserSchema = new Schema({
     roles: {
         type: [String],
         default: []// user, admin
+    },
+    failedAttempts: {
+        type: Number,
+        default: 0
+    },
+    lockUntil: {
+        type: Date,
+        default: null
     }
 }, {
     timestamps: true
 });
 
 module.exports = model("User", UserSchema);
+
+
